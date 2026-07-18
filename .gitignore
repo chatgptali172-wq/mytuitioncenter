@@ -4,3 +4,4 @@ node_modules/
 .opencode/
 .impeccable/
 .DS_Store
+.env
