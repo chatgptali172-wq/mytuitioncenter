@@ -1,16 +1,23 @@
-require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 
-const indexPath = path.join(__dirname, 'index.html');
-let content = fs.readFileSync(indexPath, 'utf8');
+// Pull the URL securely from the Cloudflare Environment Variable
+const envApiBase = process.env.API_BASE;
 
-const apiBase = process.env.API_BASE;
-
-if (apiBase) {
-  content = content.replace('<!-- ROUTING & API SCRIPT -->\n  <script>', `<!-- ROUTING & API SCRIPT -->\n  <script>\n    const API_BASE = '${apiBase}';`);
-  fs.writeFileSync(indexPath, content);
-  console.log(`[Build] Successfully injected API_BASE: ${apiBase}`);
-} else {
-  console.log('[Build] No API_BASE environment variable found. API calls will fail unless defined globally.');
+if (!envApiBase) {
+  console.error("\n❌ ERROR: API_BASE environment variable is missing!");
+  console.error("Please add it in your Cloudflare Pages dashboard under Settings -> Environment variables.\n");
+  process.exit(1);
 }
+
+const indexPath = path.join(__dirname, 'index.html');
+let html = fs.readFileSync(indexPath, 'utf8');
+
+// Replace the secure placeholder with the actual environment variable URL
+html = html.replace(
+  "const API_BASE = '{{API_BASE}}';", 
+  `const API_BASE = '${envApiBase}/wp-json/mtc/v1';`
+);
+
+fs.writeFileSync(indexPath, html);
+console.log('✅ API_BASE securely injected into index.html');
