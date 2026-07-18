@@ -16,7 +16,7 @@ let html = fs.readFileSync(indexPath, 'utf8');
 // Replace the secure placeholder with the actual environment variable URL
 html = html.replace(
   "const API_BASE = '{{API_BASE}}';", 
-  `const API_BASE = '${envApiBase}/wp-json/mtc/v1';`
+  `const API_BASE = '${envApiBase}';`
 );
 
 fs.writeFileSync(indexPath, html);
