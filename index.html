@@ -199,12 +199,14 @@
     }
 
     .logo {
-      font-family: var(--font-display);
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
     }
+    .logo-white { display: block; height: 40px; }
+    .logo-black { display: none; height: 40px; }
+    body.transactional-light .logo-white { display: none; }
+    body.transactional-light .logo-black { display: block; }
 
     nav {
       display: flex;
@@ -612,7 +614,10 @@
 
   <!-- HEADER -->
   <header>
-    <div class="logo" onclick="navigate('home')">My Tuition Center</div>
+    <div class="logo" onclick="navigate('home')">
+      <img src="logo-white.png" class="logo-white" alt="My Tuition Center">
+      <img src="logo-black.png" class="logo-black" alt="My Tuition Center">
+    </div>
     <nav>
       <div class="nav-links" id="navLinks">
         <a onclick="navigate('home')">Home</a>
@@ -853,7 +858,10 @@
   <footer>
     <div class="footer-grid">
       <div>
-        <h3 style="font-family: var(--font-display); font-size: 18px; margin-bottom: 16px;">My Tuition Center</h3>
+        <div class="logo" onclick="navigate('home')" style="margin-bottom: 16px;">
+          <img src="logo-white.png" class="logo-white" alt="My Tuition Center">
+          <img src="logo-black.png" class="logo-black" alt="My Tuition Center">
+        </div>
         <p style="color: var(--shade-50);">Empowering Pakistani e-commerce.</p>
       </div>
       <div class="footer-links">
