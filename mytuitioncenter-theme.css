@@ -1,0 +1,168 @@
+/* Shopify-inspired Dual Track Theme
+   Mapped from DESIGN.md
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@420;500;550&display=swap');
+
+:root {
+  /* Colors */
+  --mtc-primary: #000000;
+  --mtc-ink: #000000;
+  --mtc-on-primary: #ffffff;
+  --mtc-on-dark: #ffffff;
+  --mtc-canvas-night: #000000;
+  --mtc-canvas-night-elevated: #0a0a0a;
+  --mtc-canvas-light: #ffffff;
+  --mtc-canvas-cream: #fbfbf5;
+  --mtc-surface-elevated-dark: #1e2c31;
+  --mtc-shade-30: #d4d4d8;
+  --mtc-shade-40: #a1a1aa;
+  --mtc-shade-50: #71717a;
+  --mtc-shade-60: #52525b;
+  --mtc-shade-70: #3f3f46;
+  --mtc-hairline-light: #e4e4e7;
+  --mtc-hairline-dark: #1e2c31;
+  --mtc-aloe-10: #c1fbd4;
+  --mtc-pistachio-10: #d4f9e0;
+  --mtc-link-cool-1: #9dabad;
+  --mtc-link-cool-2: #9797a2;
+  --mtc-link-cool-3: #bdbdca;
+  --mtc-link-mint: #99b3ad;
+
+  /* Overriding Elementor Global Colors */
+  --e-global-color-primary: var(--mtc-primary);
+  --e-global-color-secondary: var(--mtc-shade-50);
+  --e-global-color-text: var(--mtc-ink);
+  --e-global-color-accent: var(--mtc-aloe-10);
+  --e-global-color-66d1f05: var(--mtc-canvas-night);
+  --e-global-color-944a991: var(--mtc-on-primary);
+  
+  /* Typography Overrides */
+  --e-global-typography-primary-font-family: 'NeueHaasGrotesk Display', Helvetica, Arial, sans-serif;
+  --e-global-typography-primary-font-weight: 330;
+  --e-global-typography-secondary-font-family: 'Inter Variable', Inter, Helvetica, Arial, sans-serif;
+  --e-global-typography-secondary-font-weight: 550;
+  --e-global-typography-text-font-family: 'Inter Variable', Inter, Helvetica, Arial, sans-serif;
+  --e-global-typography-text-font-weight: 420;
+  --e-global-typography-accent-font-family: 'Inter Variable', Inter, Helvetica, Arial, sans-serif;
+  --e-global-typography-accent-font-weight: 550;
+  
+  /* Elementor specifics */
+  --e-button-border-radius: 9999px;
+  font-feature-settings: "ss03";
+}
+
+/* Global Typography & Font Overrides */
+body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+  font-feature-settings: "ss03";
+}
+
+h1, h2, h3, .elementor-heading-title {
+  font-family: 'NeueHaasGrotesk Display', Helvetica, Arial, sans-serif !important;
+}
+
+body, p, span, .elementor-text-editor {
+  font-family: 'Inter Variable', Inter, Helvetica, Arial, sans-serif !important;
+}
+
+/* Base button styling overrides (Pill shape) */
+.elementor-button, .btn, button {
+  border-radius: 9999px !important;
+  font-family: 'Inter Variable', Inter, Helvetica, Arial, sans-serif !important;
+  font-weight: 420 !important;
+  text-transform: none !important;
+}
+
+/* ==== DUAL TRACK STYLING ==== */
+
+/* 1. Cinematic Dark Track (Home, About Us) */
+body.cinematic-dark {
+  background-color: var(--mtc-canvas-night) !important;
+  color: var(--mtc-on-primary) !important;
+}
+
+body.cinematic-dark .elementor-section, 
+body.cinematic-dark .elementor-container,
+body.cinematic-dark .elementor-widget-wrap {
+  background-color: transparent !important;
+}
+
+body.cinematic-dark h1, 
+body.cinematic-dark h2, 
+body.cinematic-dark h3, 
+body.cinematic-dark p, 
+body.cinematic-dark span, 
+body.cinematic-dark .elementor-heading-title, 
+body.cinematic-dark .elementor-text-editor {
+  color: var(--mtc-on-primary) !important;
+}
+
+/* Dark Track Buttons: button-outline-on-dark */
+body.cinematic-dark .elementor-button {
+  background-color: transparent !important;
+  border: 2px solid var(--mtc-on-primary) !important;
+  color: var(--mtc-on-primary) !important;
+  box-shadow: none !important;
+}
+body.cinematic-dark .elementor-button:hover {
+  background-color: var(--mtc-shade-70) !important;
+}
+
+/* Dark Track Cards */
+body.cinematic-dark .elementor-column,
+body.cinematic-dark .elementor-widget-image-box {
+  background-color: var(--mtc-canvas-night-elevated) !important;
+  border: 1px solid var(--mtc-hairline-dark) !important;
+  border-radius: 12px !important;
+}
+
+
+/* 2. Transactional Light Track (Courses, Contact) */
+body.transactional-light {
+  background-color: var(--mtc-canvas-light) !important;
+  color: var(--mtc-ink) !important;
+}
+
+body.transactional-light .elementor-section {
+  background-color: var(--mtc-canvas-cream) !important;
+}
+
+body.transactional-light h1, 
+body.transactional-light h2, 
+body.transactional-light h3, 
+body.transactional-light p, 
+body.transactional-light span, 
+body.transactional-light .elementor-heading-title, 
+body.transactional-light .elementor-text-editor {
+  color: var(--mtc-ink) !important;
+}
+
+/* Light Track Buttons: button-primary-pill or aloe */
+body.transactional-light .elementor-button {
+  background-color: var(--mtc-primary) !important;
+  color: var(--mtc-on-primary) !important;
+  border: none !important;
+}
+body.transactional-light .elementor-button:hover {
+  background-color: var(--mtc-shade-70) !important;
+}
+
+/* Special Aloe Accent (for featured / important buttons or cards on light track) */
+body.transactional-light .elementor-button.featured-cta {
+  background-color: var(--mtc-aloe-10) !important;
+  color: var(--mtc-ink) !important;
+}
+
+/* Light Track Cards */
+body.transactional-light .elementor-column,
+body.transactional-light .elementor-widget-image-box {
+  background-color: var(--mtc-canvas-light) !important;
+  border: 1px solid var(--mtc-hairline-light) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 8px rgba(0,0,0,0.1), 0 4px 4px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.1) !important;
+}
+
+/* Full Bleed Image Overrides */
+img {
+  border-radius: 20px !important;
+}

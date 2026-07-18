@@ -1,0 +1,6 @@
+node_modules/
+.gemini/
+.claude/
+.opencode/
+.impeccable/
+.DS_Store
