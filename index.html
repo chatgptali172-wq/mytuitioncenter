@@ -878,7 +878,10 @@
 
   <!-- ROUTING & API SCRIPT -->
   <script>
-    const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
+    const injectedApiBase = '{{API_BASE}}';
+    const API_BASE = injectedApiBase.startsWith('{{') 
+      ? 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1' 
+      : injectedApiBase;
 
     function navigate(pageId) {
       // Show Loader
