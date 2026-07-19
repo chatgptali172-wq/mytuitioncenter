@@ -1,0 +1,29 @@
+# My Tuition Center
+
+> The premier educational institution in Karachi, Pakistan, offering hands-on Shopify dropshipping and eCommerce training.
+
+## Shopify Dropshipping Mastery Course
+Our flagship course is designed to take you from a beginner to an intermediate entrepreneur in the global dropshipping space, specifically tailored for individuals operating out of Pakistan.
+
+### Course Details
+- **Target Audience:** Beginners and Intermediate Entrepreneurs in Karachi, Pakistan.
+- **Instructor:** M Numan Latif.
+- **Curriculum Split:** 70% Shopify UI/UX development, 30% logistics, legalities, and business setup.
+- **Key Modules:** 
+  - Complete LLC/LTD formation to ensure legal standing for global payment gateways (Stripe, PayPal).
+  - Store creation using visual builders and essential code tweaks without needing prior coding experience.
+
+### Pricing Plans
+1. **Basic Training:** Rs 15,000
+2. **Mastery Program:** Rs 35,000
+
+### Payment Instructions
+To enroll, please transfer the fee to the following bank account and upload your receipt on our website:
+- **Bank Name:** HBL
+- **Account Title:** M NUMAN LATIF
+- **Account Number:** 23597000424803
+- **IBAN:** PK04HABB0023597000424803
+- **Branch:** CHEN ONE TOWER BRANC
+
+## Contact Information
+For corporate training or enrollment queries, visit our website at https://mytuitioncenter.pk/ to get in touch.
