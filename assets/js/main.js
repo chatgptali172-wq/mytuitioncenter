@@ -59,59 +59,6 @@ const schemaData = {
 
 const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
 
-    function navigate(pageId) {
-      // Show Loader
-      const loader = document.getElementById('loader-overlay');
-      loader.classList.add('active');
-
-      // Close mobile menu
-      document.getElementById('navLinks').classList.remove('active');
-      window.scrollTo(0, 0);
-
-      // Simulate network transition
-      setTimeout(() => {
-        // Hide all pages
-        document.querySelectorAll('.page').forEach(page => {
-          page.classList.remove('active');
-          page.classList.remove('shimmer-active');
-        });
-        
-        // Show target page
-        const targetPage = document.getElementById('page-' + pageId);
-        if (targetPage) {
-          targetPage.classList.add('active');
-          
-          // Trigger shimmer effect
-          requestAnimationFrame(() => {
-            targetPage.classList.add('shimmer-active');
-          });
-
-          // Remove shimmer class after animation completes
-          setTimeout(() => {
-            targetPage.classList.remove('shimmer-active');
-          }, 1000);
-          
-          // Update body theme (Dark vs Light track)
-          const theme = targetPage.getAttribute('data-theme');
-          document.body.className = theme;
-
-          // Update Header buttons based on theme
-          const btnPrimary = document.getElementById('headerBtnPrimary');
-          
-          if (theme === 'transactional-light') {
-            if (btnPrimary) btnPrimary.className = 'btn btn-primary';
-            document.querySelectorAll('.footer-links div').forEach(el => el.style.color = 'var(--ink)');
-          } else {
-            if (btnPrimary) btnPrimary.className = 'btn btn-outline-dark';
-            document.querySelectorAll('.footer-links div').forEach(el => el.style.color = 'var(--on-primary)');
-          }
-        }
-        
-        // Hide loader
-        loader.classList.remove('active');
-      }, 600); // 600ms SVG loading duration
-    }
-
     // Modal Logic
     function openModal(plan) {
       const modal = document.getElementById('enroll-modal');

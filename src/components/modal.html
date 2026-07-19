@@ -1,0 +1,60 @@
+<!-- ENROLLMENT MODAL -->
+  <div class="modal-overlay" id="enroll-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal" onclick="closeModal()">&times;</button>
+      <h2 class="heading-xl" style="margin-bottom: var(--space-md);" id="modal-title">Complete Enrollment</h2>
+      <p style="color: var(--shade-40); margin-bottom: var(--space-xl);">Please fill out the form below and upload your payment receipt to secure your spot.</p>
+      
+      <div style="background-color: var(--surface-elevated-dark); padding: var(--space-md); border-radius: 8px; margin-bottom: var(--space-lg); border: 1px solid var(--overlay-light-10);">
+        <h4 style="margin-bottom: 8px; font-size: 16px;">Payment Instructions</h4>
+        <p style="font-size: 14px; margin-bottom: 8px; color: var(--shade-40);">Please transfer the enrollment fee to the following bank account:</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6;">
+          <li><strong>Bank Name:</strong> HBL</li>
+          <li><strong>Account Title:</strong> M NUMAN LATIF</li>
+          <li style="display: flex; align-items: center; gap: 6px;">
+            <strong>Account Number:</strong> <span>23597000424803</span>
+            <button type="button" onclick="navigator.clipboard.writeText('23597000424803'); const btn1 = this; const orig1 = btn1.innerHTML; btn1.innerHTML = 'Copied!'; setTimeout(() => btn1.innerHTML = orig1, 1500);" style="background: var(--overlay-light-10); border: 1px solid var(--overlay-light-20); border-radius: 4px; font-size: 13px; padding: 8px 12px; min-height: 44px; min-width: 44px; cursor: pointer; color: var(--on-primary);">Copy</button>
+          </li>
+          <li style="display: flex; align-items: center; gap: 6px;">
+            <strong>IBAN:</strong> <span>PK04HABB0023597000424803</span>
+            <button type="button" onclick="navigator.clipboard.writeText('PK04HABB0023597000424803'); const btn2 = this; const orig2 = btn2.innerHTML; btn2.innerHTML = 'Copied!'; setTimeout(() => btn2.innerHTML = orig2, 1500);" style="background: var(--overlay-light-10); border: 1px solid var(--overlay-light-20); border-radius: 4px; font-size: 13px; padding: 8px 12px; min-height: 44px; min-width: 44px; cursor: pointer; color: var(--on-primary);">Copy</button>
+          </li>
+          <li><strong>Branch:</strong> CHEN ONE TOWER BRANC</li>
+        </ul>
+      </div>
+
+      <form id="enrollment-form" onsubmit="submitEnrollment(event)">
+        <div class="form-group">
+          <label for="enroll-plan" style="display: block; margin-bottom: 8px; font-weight: 500;">Selected Plan</label>
+          <select id="enroll-plan" name="plan" class="form-control" required style="background-color: var(--canvas-night-elevated);">
+            <option value="Basic">Basic Training (Rs 15,000)</option>
+            <option value="Mastery">Mastery Program (Rs 35,000)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="enroll-name" style="display: block; margin-bottom: 8px; font-weight: 500;">Full Name</label>
+          <input type="text" id="enroll-name" name="name" class="form-control" placeholder="Jane Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="enroll-email" style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
+          <input type="email" id="enroll-email" name="email" class="form-control" placeholder="jane@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="enroll-phone" style="display: block; margin-bottom: 8px; font-weight: 500;">Phone Number</label>
+          <input type="tel" id="enroll-phone" name="phone" class="form-control" placeholder="+92 300 1234567" required>
+        </div>
+        <div class="form-group">
+          <label for="enroll-receipt" style="display: block; margin-bottom: 8px; font-weight: 500;">Payment Receipt (Max 5MB)</label>
+          <input type="file" id="enroll-receipt" name="receipt" class="form-control" accept="image/*,.pdf" required style="padding: 9px 12px;">
+          <small style="color: var(--shade-40); margin-top: 4px; display: block;" id="file-error"></small>
+          <small id="ocr-status" style="margin-top: 4px; display: block; font-weight: 500;"></small>
+        </div>
+        <button class="btn btn-primary" type="submit" id="enroll-submit-btn" style="width: 100%; margin-top: var(--space-sm);">Submit Application</button>
+      </form>
+      <div id="enroll-success" style="display: none; text-align: center; padding: var(--space-xl) 0;">
+        <h3 style="color: var(--success); margin-bottom: 12px;">✅ Application Received!</h3>
+        <p style="color: var(--shade-50);">We have successfully received your details and payment receipt. Our team will contact you shortly to activate your access.</p>
+        <button class="btn btn-outline-dark" style="margin-top: 24px;" onclick="closeModal()">Close Window</button>
+      </div>
+    </div>
+  </div>
