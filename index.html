@@ -32,7 +32,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>  
   
   <link rel="stylesheet" href="assets/css/style.css">
@@ -52,11 +52,11 @@
   <!-- ENROLLMENT MODAL -->
   <div class="modal-overlay" id="enroll-modal">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <button class="modal-close" aria-label="Close modal" onclick="closeModal()">&times;</button>
       <h2 class="heading-xl" style="margin-bottom: var(--space-md);" id="modal-title">Complete Enrollment</h2>
       <p style="color: var(--shade-40); margin-bottom: var(--space-xl);">Please fill out the form below and upload your payment receipt to secure your spot.</p>
       
-      <div style="background-color: var(--surface-elevated-dark); padding: var(--space-md); border-radius: 8px; margin-bottom: var(--space-lg); border: 1px solid rgba(255,255,255,0.1);">
+      <div style="background-color: var(--surface-elevated-dark); padding: var(--space-md); border-radius: 8px; margin-bottom: var(--space-lg); border: 1px solid var(--overlay-light-10);">
         <h4 style="margin-bottom: 8px; font-size: 16px;">Payment Instructions</h4>
         <p style="font-size: 14px; margin-bottom: 8px; color: var(--shade-40);">Please transfer the enrollment fee to the following bank account:</p>
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6;">
@@ -64,11 +64,11 @@
           <li><strong>Account Title:</strong> M NUMAN LATIF</li>
           <li style="display: flex; align-items: center; gap: 6px;">
             <strong>Account Number:</strong> <span>23597000424803</span>
-            <button type="button" onclick="navigator.clipboard.writeText('23597000424803'); const btn1 = this; const orig1 = btn1.innerHTML; btn1.innerHTML = 'Copied!'; setTimeout(() => btn1.innerHTML = orig1, 1500);" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 11px; padding: 2px 6px; cursor: pointer; color: var(--on-primary);">Copy</button>
+            <button type="button" onclick="navigator.clipboard.writeText('23597000424803'); const btn1 = this; const orig1 = btn1.innerHTML; btn1.innerHTML = 'Copied!'; setTimeout(() => btn1.innerHTML = orig1, 1500);" style="background: var(--overlay-light-10); border: 1px solid var(--overlay-light-20); border-radius: 4px; font-size: 13px; padding: 8px 12px; min-height: 44px; min-width: 44px; cursor: pointer; color: var(--on-primary);">Copy</button>
           </li>
           <li style="display: flex; align-items: center; gap: 6px;">
             <strong>IBAN:</strong> <span>PK04HABB0023597000424803</span>
-            <button type="button" onclick="navigator.clipboard.writeText('PK04HABB0023597000424803'); const btn2 = this; const orig2 = btn2.innerHTML; btn2.innerHTML = 'Copied!'; setTimeout(() => btn2.innerHTML = orig2, 1500);" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 11px; padding: 2px 6px; cursor: pointer; color: var(--on-primary);">Copy</button>
+            <button type="button" onclick="navigator.clipboard.writeText('PK04HABB0023597000424803'); const btn2 = this; const orig2 = btn2.innerHTML; btn2.innerHTML = 'Copied!'; setTimeout(() => btn2.innerHTML = orig2, 1500);" style="background: var(--overlay-light-10); border: 1px solid var(--overlay-light-20); border-radius: 4px; font-size: 13px; padding: 8px 12px; min-height: 44px; min-width: 44px; cursor: pointer; color: var(--on-primary);">Copy</button>
           </li>
           <li><strong>Branch:</strong> CHEN ONE TOWER BRANC</li>
         </ul>
@@ -76,26 +76,26 @@
 
       <form id="enrollment-form" onsubmit="submitEnrollment(event)">
         <div class="form-group">
-          <label style="display: block; margin-bottom: 8px; font-weight: 500;">Selected Plan</label>
+          <label for="enroll-plan" style="display: block; margin-bottom: 8px; font-weight: 500;">Selected Plan</label>
           <select id="enroll-plan" name="plan" class="form-control" required style="background-color: var(--canvas-night-elevated);">
             <option value="Basic">Basic Training (Rs 15,000)</option>
             <option value="Mastery">Mastery Program (Rs 35,000)</option>
           </select>
         </div>
         <div class="form-group">
-          <label style="display: block; margin-bottom: 8px; font-weight: 500;">Full Name</label>
+          <label for="enroll-name" style="display: block; margin-bottom: 8px; font-weight: 500;">Full Name</label>
           <input type="text" id="enroll-name" name="name" class="form-control" placeholder="Jane Doe" required>
         </div>
         <div class="form-group">
-          <label style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
+          <label for="enroll-email" style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
           <input type="email" id="enroll-email" name="email" class="form-control" placeholder="jane@example.com" required>
         </div>
         <div class="form-group">
-          <label style="display: block; margin-bottom: 8px; font-weight: 500;">Phone Number</label>
+          <label for="enroll-phone" style="display: block; margin-bottom: 8px; font-weight: 500;">Phone Number</label>
           <input type="tel" id="enroll-phone" name="phone" class="form-control" placeholder="+92 300 1234567" required>
         </div>
         <div class="form-group">
-          <label style="display: block; margin-bottom: 8px; font-weight: 500;">Payment Receipt (Max 5MB)</label>
+          <label for="enroll-receipt" style="display: block; margin-bottom: 8px; font-weight: 500;">Payment Receipt (Max 5MB)</label>
           <input type="file" id="enroll-receipt" name="receipt" class="form-control" accept="image/*,.pdf" required style="padding: 9px 12px;">
           <small style="color: var(--shade-40); margin-top: 4px; display: block;" id="file-error"></small>
           <small id="ocr-status" style="margin-top: 4px; display: block; font-weight: 500;"></small>
@@ -103,7 +103,7 @@
         <button class="btn btn-primary" type="submit" id="enroll-submit-btn" style="width: 100%; margin-top: var(--space-sm);">Submit Application</button>
       </form>
       <div id="enroll-success" style="display: none; text-align: center; padding: var(--space-xl) 0;">
-        <h3 style="color: green; margin-bottom: 12px;">✅ Application Received!</h3>
+        <h3 style="color: var(--success); margin-bottom: 12px;">✅ Application Received!</h3>
         <p style="color: var(--shade-50);">We have successfully received your details and payment receipt. Our team will contact you shortly to activate your access.</p>
         <button class="btn btn-outline-dark" style="margin-top: 24px;" onclick="closeModal()">Close Window</button>
       </div>
@@ -136,7 +136,7 @@
     <!-- PAGE 1: HOME (Dark) -->
     <div id="page-home" class="page active" data-theme="cinematic-dark">
       <section class="hero-section">
-        <video autoplay muted loop playsinline class="hero-video-bg">
+        <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1920&q=80" class="hero-video-bg">
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4" type="video/mp4">
         </video>
         <div class="hero-content container">
@@ -156,18 +156,20 @@
           </p>
         </div>
 
-        <div style="display: flex; flex-wrap: wrap; gap: var(--space-huge); justify-content: space-around; text-align: center; margin-top: var(--space-mega);">
-          <div>
-            <div class="display-lg">4,000+</div>
-            <div class="body-lg">Success Stories</div>
-          </div>
-          <div>
-            <div class="display-lg">280+</div>
-            <div class="body-lg">Batches Completed</div>
-          </div>
-          <div>
-            <div class="display-lg">10K+</div>
-            <div class="body-lg">Students Trained</div>
+        <div style="margin-top: var(--space-mega); max-width: 1000px; margin-left: auto; margin-right: auto;">
+          <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--overlay-light-20); padding-bottom: var(--space-sm);">
+              <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">4,000+</div>
+              <div class="body-lg" style="color: var(--shade-40); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Success Stories</div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--overlay-light-20); padding-bottom: var(--space-sm);">
+              <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">280+</div>
+              <div class="body-lg" style="color: var(--shade-40); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Batches Completed</div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--overlay-light-20); padding-bottom: var(--space-sm);">
+              <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">10K+</div>
+              <div class="body-lg" style="color: var(--shade-40); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Students Trained</div>
+            </div>
           </div>
         </div>
 
@@ -218,7 +220,7 @@
         <p class="body-lg" style="margin-bottom: var(--space-xxl);">
           For over a decade, My Tuition Center has trained thousands of marketers, freelancers, and entrepreneurs nationwide. Now with our 2.0 curriculum, we’re taking that mission further.
         </p>
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Team collaborating" style="width: 100%; border-radius: 12px; margin-bottom: var(--space-huge);">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Team collaborating" loading="lazy" decoding="async" style="width: 100%; border-radius: 12px; margin-bottom: var(--space-huge);">
         
         <h3 class="heading-xl" style="margin-bottom: var(--space-md);">Our Mission</h3>
         <p class="body-lg" style="margin-bottom: var(--space-xl);">
@@ -273,7 +275,7 @@
           </div>
           
           <div class="card-pricing featured">
-            <span style="background: var(--primary); color: white; padding: 4px 12px; border-radius: 999px; font-size: 12px; width: fit-content; margin-bottom: 8px;">Most Popular</span>
+            <span style="background: var(--primary); color: var(--on-primary); padding: 4px 12px; border-radius: 999px; font-size: 12px; width: fit-content; margin-bottom: 8px;">Most Popular</span>
             <h3 class="heading-xl">Mastery Program</h3>
             <div class="display-md">Rs 35,000</div>
             <p>Everything you need to launch and scale.</p>
@@ -330,19 +332,19 @@
           Have questions about enrollment or need corporate training? Our team is ready to help.
         </p>
 
-        <div style="background-color: var(--canvas-night-elevated); padding: var(--space-xxl); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="background-color: var(--canvas-night-elevated); padding: var(--space-xxl); border-radius: 12px; border: 1px solid var(--overlay-light-10);">
           <div id="contact-form-container">
             <form onsubmit="submitContact(event)">
               <div class="form-group">
-                <label style="display: block; margin-bottom: 8px; font-weight: 500;">Name</label>
+                <label for="contact-name" style="display: block; margin-bottom: 8px; font-weight: 500;">Name</label>
                 <input type="text" id="contact-name" class="form-control" placeholder="Jane Doe" required>
               </div>
               <div class="form-group">
-                <label style="display: block; margin-bottom: 8px; font-weight: 500;">Email</label>
+                <label for="contact-email" style="display: block; margin-bottom: 8px; font-weight: 500;">Email</label>
                 <input type="email" id="contact-email" class="form-control" placeholder="jane@example.com" required>
               </div>
               <div class="form-group">
-                <label style="display: block; margin-bottom: 8px; font-weight: 500;">Message</label>
+                <label for="contact-message" style="display: block; margin-bottom: 8px; font-weight: 500;">Message</label>
                 <textarea id="contact-message" class="form-control" rows="5" placeholder="How can we help?" required></textarea>
               </div>
               <button class="btn btn-primary" type="submit" style="width: 100%;">Send Message</button>

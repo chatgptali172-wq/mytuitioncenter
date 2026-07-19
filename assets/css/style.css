@@ -16,6 +16,9 @@
       --shade-50: #71717a;
       --hairline-light: #e4e4e7;
       --link-cool-1: #9dabad;
+      --overlay-light-10: rgba(255, 255, 255, 0.1);
+      --overlay-light-20: rgba(255, 255, 255, 0.2);
+      --success: #10b981;
 
       /* Spacing */
       --space-xxs: 2px;
@@ -29,9 +32,9 @@
       --space-mega: 128px;
 
       /* Typography */
-      --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      --font-body: "Inter", sans-serif;
-      --font-feature: "ss03";
+      --font-display: "Outfit", system-ui, sans-serif;
+      --font-body: "Outfit", system-ui, sans-serif;
+      --font-feature: normal;
     }
 
     /* GLOBAL STYLES */
