@@ -338,3 +338,35 @@ const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
         menuToggle.innerHTML = '&#9776;'; // Hamburger icon
       }
     }
+
+    // MPA Loader and Shimmer Transitions
+    window.addEventListener('load', () => {
+      // Fade out loader
+      const overlay = document.getElementById('loader-overlay');
+      if (overlay) {
+        overlay.classList.remove('active');
+      }
+      
+      // Add shimmer to main content
+      const main = document.querySelector('main');
+      if (main) {
+        main.classList.add('shimmer-active');
+        setTimeout(() => {
+          main.classList.remove('shimmer-active');
+        }, 1500);
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link && link.href && link.hostname === window.location.hostname && !link.hash && link.target !== '_blank' && !link.hasAttribute('download')) {
+        e.preventDefault();
+        const overlay = document.getElementById('loader-overlay');
+        if (overlay) {
+          overlay.classList.add('active');
+        }
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 300);
+      }
+    });
