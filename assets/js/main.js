@@ -243,6 +243,44 @@ const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
       }, 1500);
     }
 
+    /**
+     * Unified API Error Management System
+     */
+    async function apiFetch(url, options = {}) {
+      try {
+        const response = await fetch(url, options);
+        
+        if (response.ok) {
+          return { success: true, status: response.status, data: await response.json().catch(() => ({})) };
+        }
+
+        if (response.status >= 300 && response.status < 400) {
+           return { success: false, status: response.status, error: 'Resource redirected.' };
+        }
+
+        if (response.status >= 400 && response.status < 500) {
+          let errorMessage = 'Bad request.';
+          if (response.status === 400) errorMessage = 'Invalid input data.';
+          if (response.status === 401) errorMessage = 'Unauthorized.';
+          if (response.status === 403) errorMessage = 'Forbidden.';
+          if (response.status === 404) errorMessage = 'Resource not found.';
+          if (response.status === 409) errorMessage = 'Conflict. This record already exists.';
+          if (response.status === 422) errorMessage = 'Validation failed.';
+          
+          return { success: false, status: response.status, error: errorMessage };
+        }
+
+        if (response.status >= 500 && response.status < 600) {
+           return { success: false, status: response.status, error: 'Server error. Please try again later.' };
+        }
+
+        return { success: false, status: response.status, error: `Unexpected error (Status: ${response.status})` };
+
+      } catch (error) {
+        return { success: false, status: 0, error: 'Network error. Please check your internet connection.' };
+      }
+    }
+
     async function submitContact(event) {
       event.preventDefault();
       const name = document.getElementById('contact-name').value;
@@ -257,13 +295,24 @@ const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
         btn.disabled = true;
       }
 
-      // Mocking API call so the UI flow can be seen locally
-      setTimeout(() => {
+      const result = await apiFetch(`${API_BASE}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      if (result.success) {
         const container = document.getElementById('contact-form-container');
         if (container) {
           container.innerHTML = `<div style="text-align: center; padding: 40px;"><h3 style="color: green;">✅ Message Sent!</h3><p style="margin-top: 10px;">Thank you, ${name}. We will get back to you shortly.</p></div>`;
         }
-      }, 1500);
+      } else {
+        alert(result.error);
+        if (btn) {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        }
+      }
     }
 
     async function submitLead() {
@@ -276,24 +325,61 @@ const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
       btn.innerHTML = `${spinnerSvg} Processing...`;
       btn.disabled = true;
 
-      try {
-        const response = await fetch(`${API_BASE}/leads`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, source: 'guide' })
-        });
-        if (response.ok) {
-          const container = document.getElementById('lead-form-container');
-          container.innerHTML = `<div style="padding: 12px; background-color: var(--canvas-light); border-radius: 8px; color: green; font-weight: 500;">✅ Guide sent to ${email}</div>`;
-        } else {
-          alert('Failed to submit. Please try again.');
-          btn.innerHTML = originalText;
-          btn.disabled = false;
-        }
-      } catch (err) {
-        alert('Failed to submit. Please try again.');
+      const result = await apiFetch(`${API_BASE}/leads`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'guide' })
+      });
+
+      if (result.success) {
+        localStorage.setItem('subscribed_guide', email);
+        const container = document.getElementById('lead-form-container');
+        container.innerHTML = `<div style="padding: 12px; background-color: var(--canvas-light); border-radius: 8px; color: green; font-weight: 500;">✅ Guide sent to ${email}</div>`;
+      } else if (result.status === 409 || result.status === 400) {
+        // Often APIs return 409 Conflict or 400 Bad Request for duplicates
+        localStorage.setItem('subscribed_guide', email);
+        const container = document.getElementById('lead-form-container');
+        container.innerHTML = `<div style="padding: 12px; background-color: var(--canvas-light); border-radius: 8px; color: green; font-weight: 500;">✅ You are already subscribed as ${email}</div>`;
+      } else {
+        alert(result.error);
         btn.innerHTML = originalText;
         btn.disabled = false;
       }
     }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const subscribedGuideEmail = localStorage.getItem('subscribed_guide');
+      if (subscribedGuideEmail) {
+        const container = document.getElementById('lead-form-container');
+        if (container) {
+          container.innerHTML = `<div style="padding: 12px; background-color: var(--canvas-light); border-radius: 8px; color: green; font-weight: 500;">✅ You are already subscribed as ${subscribedGuideEmail}</div>`;
+        }
+      }
 
+      // Smart Floating Enroll Button Logic
+      let lastScrollY = window.scrollY;
+      const floatingBtn = document.getElementById('floatingEnrollBtn');
+      if (floatingBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > lastScrollY && window.scrollY > 300) {
+            // Scrolling down
+            floatingBtn.classList.add('hidden-scroll');
+          } else {
+            // Scrolling up
+            floatingBtn.classList.remove('hidden-scroll');
+          }
+          lastScrollY = window.scrollY;
+        }, { passive: true });
+      }
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }

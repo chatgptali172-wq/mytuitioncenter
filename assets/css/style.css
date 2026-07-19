@@ -546,3 +546,59 @@
       .section-mega { padding: var(--space-huge) 0; }
     }
 
+/* Smart Floating Enroll Button */
+.floating-enroll-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: var(--primary-accent);
+  color: var(--on-primary);
+  padding: 16px 28px;
+  border-radius: 50px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 32px rgba(0, 230, 118, 0.4);
+  z-index: 1000;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease, box-shadow 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.floating-enroll-btn:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 230, 118, 0.6);
+}
+
+.floating-enroll-btn.hidden-scroll {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px);
+}
+
+.floating-enroll-btn svg {
+  width: 24px;
+  height: 24px;
+  animation: pulse-svg-icon 2s infinite ease-in-out;
+}
+
+@keyframes pulse-svg-icon {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .floating-enroll-btn {
+    bottom: 24px;
+    right: 24px;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+}
