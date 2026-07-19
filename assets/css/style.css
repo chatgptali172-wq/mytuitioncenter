@@ -375,10 +375,10 @@
     }
 
     .card-pricing {
-      background-color: var(--canvas-light);
+      background-color: var(--canvas-night-elevated);
       padding: var(--space-huge) var(--space-xxl);
       border-radius: 12px;
-      border: 1px solid var(--hairline-light);
+      border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
@@ -386,8 +386,8 @@
     }
     
     .card-pricing.featured {
-      background-color: var(--aloe-10);
-      border: none;
+      background-color: var(--surface-elevated-dark);
+      border: 1px solid var(--aloe-10);
     }
 
     .pricing-grid {
@@ -398,7 +398,7 @@
     }
 
     .timeline {
-      border-left: 2px solid var(--hairline-light);
+      border-left: 2px solid rgba(255,255,255,0.1);
       padding-left: var(--space-xl);
       margin-top: var(--space-huge);
       display: flex;
@@ -415,8 +415,8 @@
       top: 6px;
       width: 16px;
       height: 16px;
-      background-color: var(--pistachio-10);
-      border: 2px solid var(--canvas-cream);
+      background-color: var(--aloe-10);
+      border: 2px solid var(--canvas-night);
       border-radius: 50%;
     }
 
@@ -429,17 +429,17 @@
       width: 100%;
       padding: 12px 16px;
       border-radius: 8px;
-      border: 1px solid var(--hairline-light);
-      background-color: var(--canvas-light);
+      border: 1px solid rgba(255,255,255,0.2);
+      background-color: var(--canvas-night-elevated);
       font-family: var(--font-body);
       font-size: 16px;
-      color: var(--ink);
+      color: var(--on-primary);
       outline: none;
       transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .form-control:focus-visible {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px var(--aloe-10);
+      border-color: var(--on-primary);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
     }
     
     .modal-overlay {
@@ -460,8 +460,8 @@
       pointer-events: all;
     }
     .modal-content {
-      background: var(--canvas-light);
-      color: var(--ink);
+      background: var(--canvas-night-elevated);
+      color: var(--on-primary);
       padding: var(--space-xxl);
       border-radius: 16px;
       width: 90%;
@@ -513,24 +513,28 @@
         top: 100%;
         left: 0;
         right: 0;
-        background-color: var(--canvas-night-elevated);
+        height: 100vh;
+        background-color: rgba(9, 9, 11, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         padding: var(--space-xxl) var(--space-xl);
         border-bottom: 1px solid rgba(255,255,255,0.05);
         flex-direction: column;
         gap: var(--space-xl);
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-20px);
         pointer-events: none;
-        transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 99;
       }
       body.transactional-light .nav-links {
-        background-color: var(--canvas-cream);
+        background-color: rgba(251, 251, 245, 0.95);
         border-bottom: 1px solid var(--hairline-light);
       }
       .nav-links.active {
         opacity: 1;
         transform: translateY(0);
-        pointer-events: all;
+        pointer-events: auto;
       }
       .menu-toggle {
         display: block;
