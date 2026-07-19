@@ -249,7 +249,19 @@
     
     @media (max-width: 768px) {
       .container, .container-sm {
-        padding: 0 var(--space-lg);
+        padding-left: var(--space-lg) !important;
+        padding-right: var(--space-lg) !important;
+      }
+      header {
+        padding-left: var(--space-lg) !important;
+        padding-right: var(--space-lg) !important;
+      }
+      footer {
+        padding-left: var(--space-lg) !important;
+        padding-right: var(--space-lg) !important;
+      }
+      .pricing-grid {
+        grid-template-columns: 1fr !important;
       }
     }
 
