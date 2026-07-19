@@ -1,10 +1,48 @@
 const fs = require('fs');
 const path = require('path');
 
-// Output directory is ROOT
-const PUBLIC_DIR = __dirname;
+// Output directory
+const PUBLIC_DIR = path.join(__dirname, 'public');
 
-// Inject API_BASE securely into the main.js
+// Create public dir if it doesn't exist
+if (!fs.existsSync(PUBLIC_DIR)) {
+  fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+}
+
+// 1. Copy assets to public
+function copyDirectory(src, dest) {
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest, { recursive: true });
+  }
+  
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+  for (let entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+    
+    if (entry.isDirectory()) {
+      copyDirectory(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
+
+const assetsSrc = path.join(__dirname, 'assets');
+const assetsDest = path.join(PUBLIC_DIR, 'assets');
+if (fs.existsSync(assetsSrc)) {
+  copyDirectory(assetsSrc, assetsDest);
+}
+
+// Additional files like manifest.json, sw.js, sitemap.xml, robots.txt, llms.txt
+const rootFiles = ['manifest.json', 'sw.js', 'sitemap.xml', 'robots.txt', 'llms.txt'];
+for (const file of rootFiles) {
+  if (fs.existsSync(path.join(__dirname, file))) {
+    fs.copyFileSync(path.join(__dirname, file), path.join(PUBLIC_DIR, file));
+  }
+}
+
+// Inject API_BASE securely into the copied main.js inside public/assets/js/
 const envApiBase = process.env.API_BASE;
 if (envApiBase) {
   const mainJsPath = path.join(PUBLIC_DIR, 'assets', 'js', 'main.js');
@@ -15,13 +53,13 @@ if (envApiBase) {
       `const API_BASE = '${envApiBase}';`
     );
     fs.writeFileSync(mainJsPath, jsContent);
-    console.log('✅ API_BASE securely injected into assets/js/main.js');
+    console.log('✅ API_BASE securely injected into public/assets/js/main.js');
   }
 } else {
   console.warn("⚠️ WARNING: API_BASE environment variable is missing! Skipping injection.");
 }
 
-// Read components
+// 2. Read components
 const componentsDir = path.join(__dirname, 'src', 'components');
 const components = {};
 
@@ -35,7 +73,7 @@ if (fs.existsSync(componentsDir)) {
   }
 }
 
-// Process pages
+// 3. Process pages
 const pagesDir = path.join(__dirname, 'src', 'pages');
 
 if (fs.existsSync(pagesDir)) {
@@ -52,11 +90,11 @@ if (fs.existsSync(pagesDir)) {
         content = content.split(includeTag).join(compContent);
       }
       
-      // Write to root
+      // Write to public
       fs.writeFileSync(path.join(PUBLIC_DIR, page), content);
-      console.log(`✅ Built ${page} to root`);
+      console.log(`✅ Built ${page} to public/`);
     }
   }
 }
 
-console.log('🎉 Build complete! Site generated in root directory.');
+console.log('🎉 Build complete! Site is ready in public/ directory.');
