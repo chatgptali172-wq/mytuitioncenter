@@ -229,15 +229,28 @@
     }
 
     /* LAYOUT & SECTIONS */
+    main {
+      min-height: calc(100vh - 250px);
+      display: flex;
+      flex-direction: column;
+    }
     .container {
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 var(--space-xxl);
+      width: 100%;
     }
     .container-sm {
       max-width: 840px;
       margin: 0 auto;
       padding: 0 var(--space-xl);
+      width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .container, .container-sm {
+        padding: 0 var(--space-lg);
+      }
     }
 
     section {
@@ -252,7 +265,10 @@
       display: none;
     }
     .page.active {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      width: 100%;
     }
     
     /* SHIMMER EFFECT ON LOAD */
