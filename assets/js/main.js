@@ -96,16 +96,13 @@ const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
           document.body.className = theme;
 
           // Update Header buttons based on theme
-          const btnOut = document.getElementById('headerBtnOut');
           const btnPrimary = document.getElementById('headerBtnPrimary');
           
           if (theme === 'transactional-light') {
-            btnOut.className = 'btn btn-outline-light';
-            btnPrimary.className = 'btn btn-primary';
+            if (btnPrimary) btnPrimary.className = 'btn btn-primary';
             document.querySelectorAll('.footer-links div').forEach(el => el.style.color = 'var(--ink)');
           } else {
-            btnOut.className = 'btn btn-outline-dark';
-            btnPrimary.className = 'btn btn-outline-dark';
+            if (btnPrimary) btnPrimary.className = 'btn btn-outline-dark';
             document.querySelectorAll('.footer-links div').forEach(el => el.style.color = 'var(--on-primary)');
           }
         }
