@@ -57,7 +57,7 @@ const schemaData = {
     ]
   }
 
-const API_BASE = '{{API_BASE}}';
+const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
 
     function navigate(pageId) {
       // Show Loader
