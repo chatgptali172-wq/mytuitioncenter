@@ -380,3 +380,14 @@ const API_BASE = 'https://cms.mytuitioncenter.pk/wp-json/mtc/v1';
           });
       });
     }
+
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      const menuToggle = document.getElementById('menuToggle');
+      navLinks.classList.toggle('active');
+      if (navLinks.classList.contains('active')) {
+        menuToggle.innerHTML = '&times;'; // Cross icon
+      } else {
+        menuToggle.innerHTML = '&#9776;'; // Hamburger icon
+      }
+    }

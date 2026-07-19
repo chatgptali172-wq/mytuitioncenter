@@ -128,7 +128,7 @@
 
         <button class="btn btn-outline-dark" id="headerBtnPrimary" onclick="openModal('Mastery')">Enroll Now</button>
       </div>
-      <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
+      <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
     </nav>
   </header>
 
@@ -156,20 +156,18 @@
           </p>
         </div>
 
-        <div style="margin-top: var(--space-mega); max-width: 1000px; margin-left: auto; margin-right: auto;">
-          <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--overlay-light-20); padding-bottom: var(--space-sm);">
-              <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">4,000+</div>
-              <div class="body-lg" style="color: var(--shade-40); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Success Stories</div>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--overlay-light-20); padding-bottom: var(--space-sm);">
-              <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">280+</div>
-              <div class="body-lg" style="color: var(--shade-40); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Batches Completed</div>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--overlay-light-20); padding-bottom: var(--space-sm);">
-              <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">10K+</div>
-              <div class="body-lg" style="color: var(--shade-40); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Students Trained</div>
-            </div>
+        <div class="metrics-grid">
+          <div class="metrics-row">
+            <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">4,000+</div>
+            <div class="body-lg metrics-label">Success Stories</div>
+          </div>
+          <div class="metrics-row">
+            <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">280+</div>
+            <div class="body-lg metrics-label">Batches Completed</div>
+          </div>
+          <div class="metrics-row">
+            <div class="display-xxl" style="color: var(--on-primary); line-height: 0.9;">10K+</div>
+            <div class="body-lg metrics-label">Students Trained</div>
           </div>
         </div>
 
