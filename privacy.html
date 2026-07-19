@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Privacy Policy | My Tuition Center</title>
+  <meta name="description" content="Read the privacy policy of My Tuition Center.">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mytuitioncenter.pk/">
+  <meta property="og:title" content="Privacy Policy | My Tuition Center">
+  <meta property="og:description" content="Read the privacy policy of My Tuition Center.">
+  <meta property="og:image" content="https://mytuitioncenter.pk/assets/img/logo-black.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mytuitioncenter.pk/">
+  <meta property="twitter:title" content="Privacy Policy | My Tuition Center">
+  <meta property="twitter:description" content="Read the privacy policy of My Tuition Center.">
+  <meta property="twitter:image" content="https://mytuitioncenter.pk/assets/img/logo-black.png">
+
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="assets/img/logo-black.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/img/logo-white.png" media="(prefers-color-scheme: dark)">
+  
+  <meta name="keywords" content="Shopify Dropshipping, eCommerce course Karachi, Pakistan dropshipping, My Tuition Center, M Numan Latif, Shopify training">
+  <link rel="canonical" href="https://mytuitioncenter.pk/">
+
+  <!-- JSON-LD Structured Data for AEO / GEO -->
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>  
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="cinematic-dark">
+  <!-- SVG LOADER OVERLAY -->
+  <div id="loader-overlay" class="active">
+    <svg class="shipping-box" viewBox="0 0 24 24">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+    </svg>
+    <div style="margin-top: 16px; font-weight: 500; letter-spacing: 1px;">LOADING...</div>
+  </div>
+  <!-- ENROLLMENT MODAL -->
+  <div class="modal-overlay" id="enroll-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal" onclick="closeModal()">&times;</button>
+      <h2 class="heading-xl" style="margin-bottom: var(--space-md);" id="modal-title">Complete Enrollment</h2>
+      <p style="color: var(--shade-40); margin-bottom: var(--space-xl);">Please fill out the form below and upload your payment receipt to secure your spot.</p>
+      
+      <div style="background-color: var(--surface-elevated-dark); padding: var(--space-md); border-radius: 8px; margin-bottom: var(--space-lg); border: 1px solid var(--overlay-light-10);">
+        <h4 style="margin-bottom: 8px; font-size: 16px;">Payment Instructions</h4>
+        <p style="font-size: 14px; margin-bottom: 8px; color: var(--shade-40);">Please transfer the enrollment fee to the following bank account:</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6;">
+          <li><strong>Bank Name:</strong> HBL</li>
+          <li><strong>Account Title:</strong> M NUMAN LATIF</li>
+          <li style="display: flex; align-items: center; gap: 6px;">
+            <strong>Account Number:</strong> <span>23597000424803</span>
+            <button type="button" onclick="navigator.clipboard.writeText('23597000424803'); const btn1 = this; const orig1 = btn1.innerHTML; btn1.innerHTML = 'Copied!'; setTimeout(() => btn1.innerHTML = orig1, 1500);" style="background: var(--overlay-light-10); border: 1px solid var(--overlay-light-20); border-radius: 4px; font-size: 13px; padding: 8px 12px; min-height: 44px; min-width: 44px; cursor: pointer; color: var(--on-primary);">Copy</button>
+          </li>
+          <li style="display: flex; align-items: center; gap: 6px;">
+            <strong>IBAN:</strong> <span>PK04HABB0023597000424803</span>
+            <button type="button" onclick="navigator.clipboard.writeText('PK04HABB0023597000424803'); const btn2 = this; const orig2 = btn2.innerHTML; btn2.innerHTML = 'Copied!'; setTimeout(() => btn2.innerHTML = orig2, 1500);" style="background: var(--overlay-light-10); border: 1px solid var(--overlay-light-20); border-radius: 4px; font-size: 13px; padding: 8px 12px; min-height: 44px; min-width: 44px; cursor: pointer; color: var(--on-primary);">Copy</button>
+          </li>
+          <li><strong>Branch:</strong> CHEN ONE TOWER BRANC</li>
+        </ul>
+      </div>
+
+      <form id="enrollment-form" onsubmit="submitEnrollment(event)">
+        <div class="form-group">
+          <label for="enroll-plan" style="display: block; margin-bottom: 8px; font-weight: 500;">Selected Plan</label>
+          <select id="enroll-plan" name="plan" class="form-control" required style="background-color: var(--canvas-night-elevated);">
+            <option value="Basic">Basic Training (Rs 15,000)</option>
+            <option value="Mastery">Mastery Program (Rs 35,000)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="enroll-name" style="display: block; margin-bottom: 8px; font-weight: 500;">Full Name</label>
+          <input type="text" id="enroll-name" name="name" class="form-control" placeholder="Jane Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="enroll-email" style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
+          <input type="email" id="enroll-email" name="email" class="form-control" placeholder="jane@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="enroll-phone" style="display: block; margin-bottom: 8px; font-weight: 500;">Phone Number</label>
+          <input type="tel" id="enroll-phone" name="phone" class="form-control" placeholder="+92 300 1234567" required>
+        </div>
+        <div class="form-group">
+          <label for="enroll-receipt" style="display: block; margin-bottom: 8px; font-weight: 500;">Payment Receipt (Max 5MB)</label>
+          <input type="file" id="enroll-receipt" name="receipt" class="form-control" accept="image/*,.pdf" required style="padding: 9px 12px;">
+          <small style="color: var(--shade-40); margin-top: 4px; display: block;" id="file-error"></small>
+          <small id="ocr-status" style="margin-top: 4px; display: block; font-weight: 500;"></small>
+        </div>
+        <button class="btn btn-primary" type="submit" id="enroll-submit-btn" style="width: 100%; margin-top: var(--space-sm);">Submit Application</button>
+      </form>
+      <div id="enroll-success" style="display: none; text-align: center; padding: var(--space-xl) 0;">
+        <h3 style="color: var(--success); margin-bottom: 12px;">✅ Application Received!</h3>
+        <p style="color: var(--shade-50);">We have successfully received your details and payment receipt. Our team will contact you shortly to activate your access.</p>
+        <button class="btn btn-outline-dark" style="margin-top: 24px;" onclick="closeModal()">Close Window</button>
+      </div>
+    </div>
+  </div>
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="index.html" style="cursor: pointer; display: block;">
+      <img src="assets/img/logo-white.png" class="logo-white" alt="My Tuition Center">
+      <img src="assets/img/logo-black.png" class="logo-black" alt="My Tuition Center">
+    </a>
+    <nav>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" style="cursor: pointer; display: block;">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-buttons">
+
+        <button class="btn btn-outline-dark" id="headerBtnPrimary" onclick="openModal('Mastery')">Enroll Now</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
+    </nav>
+  </header>
+  
+  <main>
+
+<!-- PAGE 6: PRIVACY POLICY (Light) -->
+    <div id="page-privacy" class="page active" data-theme="cinematic-dark">
+      <section class="section-mega container-sm">
+        <h1 class="display-xl" style="margin-bottom: var(--space-xl);">Privacy Policy</h1>
+        <p class="body-lg" style="margin-bottom: var(--space-xl);">Last Updated: July 2026</p>
+        <div style="color: var(--shade-50); line-height: 1.8;">
+          <h3 class="heading-xl" style="margin: var(--space-xl) 0 var(--space-sm); color: var(--ink);">1. Information We Collect</h3>
+          <p>We collect information you provide directly to us, such as when you create or modify your account, request on-demand services, contact customer support, or otherwise communicate with us. This information may include: name, email, phone number, postal address, profile picture, payment method, financial and credit card information, and other information you choose to provide.</p>
+          
+          <h3 class="heading-xl" style="margin: var(--space-xl) 0 var(--space-sm); color: var(--ink);">2. How We Use Information</h3>
+          <p>We may use the information we collect about you to provide, maintain, and improve our Services, including, for example, to facilitate payments, send receipts, provide products and services you request (and send related information), develop new features, provide customer support to Users and Instructors, develop safety features, authenticate users, and send product updates and administrative messages.</p>
+        </div>
+      </section>
+    </div>
+
+    
+  </main>
+  
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html" style="margin-bottom: 16px; display: block; cursor: pointer;">
+          <img src="assets/img/logo-white.png" class="logo-white" alt="My Tuition Center">
+          <img src="assets/img/logo-black.png" class="logo-black" alt="My Tuition Center">
+        </a>
+        <p style="color: var(--shade-50);">Empowering Pakistani e-commerce.</p>
+      </div>
+      <div class="footer-links">
+        <div style="color: var(--on-primary); margin-bottom: 12px; font-weight: 600;">Explore</div>
+        <a href="index.html" style="cursor: pointer; display: block;">Home</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <div class="footer-links">
+        <div style="color: var(--on-primary); margin-bottom: 12px; font-weight: 600;">Legal</div>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <div class="footer-links">
+        <div style="color: var(--on-primary); margin-bottom: 12px; font-weight: 600;">Social</div>
+        <a href="#">YouTube</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+  <!-- SMART FLOATING ENROLL BUTTON -->
+  <button class="floating-enroll-btn" id="floatingEnrollBtn" onclick="window.location.href='curriculum.html';">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+    </svg>
+    Enroll Now
+  </button>
+  <!-- ROUTING & API SCRIPT -->
+  
+  <script src="assets/js/main.js" defer></script>
+
+</body>
+</html>
