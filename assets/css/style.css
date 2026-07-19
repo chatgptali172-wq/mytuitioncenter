@@ -597,7 +597,8 @@
 @media (max-width: 768px) {
   .floating-enroll-btn {
     bottom: 24px;
-    right: 24px;
+    left: 24px;
+    right: auto;
     padding: 14px 24px;
     font-size: 15px;
   }
